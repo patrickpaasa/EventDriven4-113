@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Driven</title>
+    <style>
+        .left-section{
+            background-color: #6734c5;
+            float: left;
+            width: 30%;
+            height: 200px;
+        }
+        .main{
+            background-color: #7c53c7;
+            float: left;
+            width: 40%;
+            height: 200px;
+
+        }
+        .right-section{
+            background-color: #5cfbc6;
+            float: left;
+            width: 30%;
+            height: 200px;
+            
+        }
+        .bg{
+            background-color: green;
+        }
+        @media screen and (max-width: 800px){
+            .left-section{
+                width: 40%;
+            }
+            .main{
+                width: 60%;
+            }
+            .right-section{
+                width: 100%;
+            }
+        }
+        @media screen and (max-width: 600px){
+            .left-section, .right-section, .main{
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="left-section"></div>
+    <div class="main"></div>
+    <div class="right-section"></div>
+</body>
+</html>
