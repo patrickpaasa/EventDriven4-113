@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Meals</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/yeti/bootstrap.min.css"
+    integrity="sha384-mLBxp+1RMvmQmXOjBzRjqqr0dP9VHU2tb3FK6VB0fJN/AOu7/y+CAeYeWJZ4b3ii" crossorigin="anonymous">
+
+</head>
+<body class="container mt-5">
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button class="btn btn-primary mb-3" onclick="loadData1()">View Chicken</button>
+        <button class="btn btn-success mb-3" onclick="loadData2()">View Beef</button>
+        <button class="btn btn-primary mb-3" onclick="loadData3()">View Seafood</button>
+    </div>
+  <h3>Chicken Menu</h3><br/>
+  <div id="prodcontainer" class="text-center d-flex flex-wrap">
+
+</div>
+</body>
+<script>
+    
+    async function loadData1(){
+        const url = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=Chicken'
+        let value = await fetch(url)
+            .then((response) => {
+                return response.json()
+                    .then((data) => {
+                    return data; 
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        return null;
+                    })
+            })
+            .catch((error) => {
+                console.log(error);
+                return null;
+            })
+            let prodcontainer = document.getElementById('prodcontainer')
+            prodcontainer.innerHTML = '';
+            for (meal of value['meals']) {
+                prodcontainer.innerHTML += `<div class="card m-2" style="width: 18rem;">
+                <img class="card-img-top" src="${meal.strMealThumb}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">${meal.strMeal}</h5>
+                    <p class="card-text">₱ ${meal.idMeal}</p>
+                </div>
+                </div>`
+            }
+    }
+    async function loadData2(){
+        const url = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef'
+        let value = await fetch(url)
+            .then((response) => {
+                return response.json()
+                    .then((data) => {
+                    return data; 
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        return null;
+                    })
+            })
+            .catch((error) => {
+                console.log(error);
+                return null;
+            })
+            let prodcontainer = document.getElementById('prodcontainer')
+            prodcontainer.innerHTML = '';
+            for (meal of value['meals']) {
+                prodcontainer.innerHTML += `<div class="card m-2" style="width: 18rem;">
+                <img class="card-img-top" src="${meal.strMealThumb}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">${meal.strMeal}</h5>
+                    <p class="card-text">₱ ${meal.idMeal}</p>
+                </div>
+                </div>`
+            }
+    }
+    async function loadData3(){
+        const url = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood'
+        let value = await fetch(url)
+            .then((response) => {
+                return response.json()
+                    .then((data) => {
+                    return data; 
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        return null;
+                    })
+            })
+            .catch((error) => {
+                console.log(error);
+                return null;
+            })
+            let prodcontainer = document.getElementById('prodcontainer')
+            prodcontainer.innerHTML = '';
+            for (meal of value['meals']) {
+                prodcontainer.innerHTML += `<div class="card m-2" style="width: 18rem;">
+                <img class="card-img-top" src="${meal.strMealThumb}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">${meal.strMeal}</h5>
+                    <p class="card-text">₱ ${meal.idMeal}</p>
+                </div>
+                </div>`
+            }
+    }
+</script>
+</html>
