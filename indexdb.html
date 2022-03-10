@@ -13,23 +13,52 @@
 
 <body class="p-5">
     <h2>Index DB thru Localbase</h2>
+    <div class="form-group">
+        <label for="iemail" class="form-label mt-4">Email address</label>
+        <input type="email" required class="form-control" id="iemail" aria-describedby="emailHelp"
+            placeholder="Enter email">
+    </div>
+    <div class="form-group">
+        <label for="ifullname" class="form-label mt-1">Fullname</label>
+        <input type="text" class="form-control" id="ifullname" aria-describedby="emailHelp" placeholder="Enter email">
+
+    </div>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-warning" onclick="resetData()">Reset</button>
+        <button type="button" class="btn btn-success" onclick="addPerson()">Save Data</button>
+        <!-- <button type="button" class="btn btn-secondary">Right</button> -->
+    </div>
 
     <script src="https://unpkg.com/localbase/dist/localbase.dev.js"></script>
 
     <script>
         let db = new Localbase('db')
 
+        function addPerson() {
+            const iemail = document.getElementById("iemail").value;
+            const ifullname = document.getElementById("ifullname").value;
+            console.log(iemail, ifullname);
+            db.collection('person').add({
+                name: ifullname,
+                email: iemail
+            });
+
+            db.collection('persons').get().then(users => {
+                console.log(users)
+            });
+            resetData();
+        }
+        function resetData() {
+            document.getElementById("iemail").value = '';
+            document.getElementById("ifullname").value = '';
+        }
         function test() {
             db.collection('users').add({
                 id: 3,
                 name: 'Marco',
                 age: 33
             });
-            db.collection('users').get().then(users => {
-                console.log(users)
-            })
         }
-        test();
     </script>
 </body>
 
