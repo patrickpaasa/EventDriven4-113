@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index DB thru Localbase</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/yeti/bootstrap.min.css"
+        integrity="sha384-mLBxp+1RMvmQmXOjBzRjqqr0dP9VHU2tb3FK6VB0fJN/AOu7/y+CAeYeWJZ4b3ii" crossorigin="anonymous">
+
+</head>
+
+<body class="p-5">
+    <h2>Index DB thru Localbase</h2>
+
+    <script src="https://unpkg.com/localbase/dist/localbase.dev.js"></script>
+
+    <script>
+        let db = new Localbase('db')
+
+        function test() {
+            db.collection('users').add({
+                id: 3,
+                name: 'Marco',
+                age: 33
+            });
+            db.collection('users').get().then(users => {
+                console.log(users)
+            })
+        }
+        test();
+    </script>
+</body>
+
+</html>
