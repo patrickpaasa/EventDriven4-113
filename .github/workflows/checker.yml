@@ -6,15 +6,18 @@ on:
 
 jobs:
 
-  read: 
+  broken_link_checker_job:
     runs-on: ubuntu-latest
-
+    name: Check for broken links
     steps:
-    - name: Check or reads code
-      uses: actions/checkout@v3     
-
-    - name: Run Super-Linter
-      uses: github/super-linter@v4
-      env:
-        DEFAULT_BRANCH: main
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Check for broken links
+      id: link-report
+      uses: celinekurpershoek/github-actions-link-checker@{version}
+      with:
+        # Required:
+        url: 'https://...'
+        # optional:
+        honorRobotExclusions: false
+        ignorePatterns: 'github,google'
+    - name: Get the result
+      run: echo "${{steps.link-report.outputs.result}}"
