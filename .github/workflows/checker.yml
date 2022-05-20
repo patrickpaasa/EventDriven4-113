@@ -1,0 +1,20 @@
+name: Just Linter
+
+on:
+  push:
+    branches: [ materialize ]
+
+jobs:
+
+  read: 
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check or reads code
+      uses: actions/checkout@v3     
+
+    - name: Run Super-Linter
+      uses: github/super-linter@v4
+      env:
+        DEFAULT_BRANCH: main
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
