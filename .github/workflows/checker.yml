@@ -15,7 +15,7 @@ jobs:
       uses: celinekurpershoek/github-actions-link-checker@v1.0.1
       with:
         # Required:
-        url: 'https://...'
+        url: 'https://raw.githubusercontent.com/patrickpaasa/EventDriven4-113/materialize/index.html'
         # optional:
         honorRobotExclusions: false
         ignorePatterns: 'github,google'
